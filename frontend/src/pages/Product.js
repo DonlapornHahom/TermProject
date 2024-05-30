@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import "../App.css"; // Importing styles from App.css
+import { formatPrice } from "../utils";
 
 function Product() {
   const { id } = useParams(); // Get the product ID from the URL
@@ -12,7 +12,7 @@ function Product() {
     const fetchProduct = async () => {
       try {
         // Fetch all products from the backend
-        const response = await fetch(`/api/product`);
+        const response = await fetch(`http://localhost:4000/api/product`);
 
         // Check if the response is successful
         if (!response.ok) {
@@ -61,11 +61,13 @@ function Product() {
         <h3>Product Detail</h3>
         <h2>{product.productName}</h2>
         <img
-          src={`${hostName + "/api" + product.productImage}`}
+          src={`${
+            hostName + "http://localhost:4000/api" + product.productImage
+          }`}
           alt={product.productName}
         />
         <h4>Size : {product.productSize}</h4>
-        <p>Price: {product.productPrice} บาท</p>
+        <p>Price: {formatPrice(product.productPrice)} THB</p>
         <div style={{ width: "100%", textAlign: "center" }}>
           <p>{product.productDescription}</p>
         </div>

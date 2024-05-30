@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from 'react-router-dom';
-import './App.css';
+import './styles/App.css';
 import Home from './pages/Home';
 import Product from './pages/Product';
 import Login from './pages/Login';
@@ -36,7 +36,7 @@ function App() {
           {/* Conditionally render Add Product and Logout buttons based on login status */}
           {loggedIn && <Link to="/add"><button className="nav-button">Add Product</button></Link>}
           {loggedIn && <button className="nav-button" onClick={handleLogout}>Logout</button>}
-          {!loggedIn && <Link to="/login"><button className="nav-button">Login</button></Link>}
+          {!loggedIn && <Link to="/login"><button className="nav-button">Sign In</button></Link>}
           {!loggedIn && <Link to="/signup"><button className="nav-button">Sign Up</button></Link>}
         </div>
       </header>

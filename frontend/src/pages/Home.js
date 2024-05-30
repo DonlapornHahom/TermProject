@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Axios from "axios";
-import "../App.css";
+import { formatPrice } from "../utils/index";
 
 function Home() {
   const [data, setData] = useState([]);
@@ -17,7 +17,7 @@ function Home() {
     setIsLoggedIn(!!token); // Update login status
     const fetchData = async () => {
       try {
-        const response = await fetch("/api/product");
+        const response = await fetch("http://localhost:4000/api/product");
         if (!response.ok) {
           throw new Error("Failed to fetch");
         }
@@ -69,7 +69,7 @@ function Home() {
           .productImage,
       }));
 
-      await Axios.delete("/api/product", {
+      await Axios.delete("http://localhost:4000/api/product", {
         data: { products: productsToDelete },
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -143,11 +143,15 @@ function Home() {
                   className="product-img"
                   width={200}
                   height={250}
-                  src={`${hostName + "/api" + product.productImage}`}
+                  src={`${
+                    hostName +
+                    "http://localhost:4000/api" +
+                    product.productImage
+                  }`}
                 />
                 <div style={{ width: "100%" }}>
                   <h3>{product.productName}</h3>
-                  <p>{product.productPrice} บาท</p>
+                  <p>{formatPrice(product.productPrice)} THB</p>
                   <p className="description-box">
                     {truncateDescription(product.productDescription)}
                   </p>

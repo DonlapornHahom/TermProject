@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import "../App.css";
 
 function Login() {
   const [username, setUsername] = useState("");
@@ -13,7 +12,7 @@ function Login() {
     setError(null); // Reset error state
 
     try {
-      const response = await fetch("/api/auth/login", {
+      const response = await fetch("http://localhost:4000/api/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -40,7 +39,6 @@ function Login() {
   return (
     <div className="app">
       <header className="header">
-        <h1>Login</h1>
         <Link to="/">
           <button className="nav-button">Home</button>
         </Link>
@@ -49,6 +47,7 @@ function Login() {
         <div className="login-form">
           {error && <div className="error">{error}</div>}
           <form className="inside-form" onSubmit={handleLogin}>
+            <h1 className="header-form">Sign In</h1>
             <div className="form-group">
               <label htmlFor="username">Username:</label>
               <input
