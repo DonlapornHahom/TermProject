@@ -64,6 +64,7 @@ function Product() {
           src={`${hostName + "/api" + product.productImage}`}
           alt={product.productName}
         />
+        <h4>Size: {product.productSize} บาท</h4>
         <p>Price: {product.productPrice} บาท</p>
         <div className="description-box">
           <p>{product.productDescription}</p>
