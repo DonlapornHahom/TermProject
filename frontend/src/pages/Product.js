@@ -11,7 +11,7 @@ function Product() {
     const fetchProduct = async () => {
       try {
         // Fetch all products from the backend
-        const response = await fetch(`http://localhost:3001/product`);
+        const response = await fetch(`/product`);
         
         // Check if the response is successful
         if (!response.ok) {
@@ -55,7 +55,7 @@ function Product() {
       <div className="product-detail">
         <h3>Product Detail</h3>
         <h2>{product.productName}</h2>
-        <img src={`http://localhost:3001${product.productImage}`} alt={product.productName} />
+        <img src={`${product.productImage}`} alt={product.productName} />
         <p>Price: {product.productPrice} บาท</p>
         <div className="description-box">
           <p>{product.productDescription}</p>
