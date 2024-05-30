@@ -1,6 +1,6 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const multer = require('multer');
+const bodyParser = require('body-parser');
 const path = require('path');
 const { v4: uuidv4 } = require('uuid');
 const cors = require('cors');
@@ -12,12 +12,13 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
+app.use('/auth', authRouter);
+
 // Serve static images from the public/Images directory
 app.use('/images', express.static(path.join(__dirname, 'public', 'images')));
 
 // Define routes
 app.use('/product', productRouter);
-app.use('/auth', authRouter);
 
 // Multer configuration for file upload
 const storage = multer.diskStorage({

@@ -1,31 +1,31 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import Axios from "axios";
-import "../App.css";
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import Axios from 'axios';
+import '../App.css';
 
 function Home() {
   const [data, setData] = useState([]);
   const [error, setError] = useState(null);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [sortOption, setSortOption] = useState("");
+  const [searchTerm, setSearchTerm] = useState('');
+  const [sortOption, setSortOption] = useState('');
   const [loading, setLoading] = useState(true);
   const [selectedProducts, setSelectedProducts] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false); // Track login status
 
   useEffect(() => {
-    const token = localStorage.getItem("token"); // Check for token in local storage
+    const token = localStorage.getItem('token'); // Check for token in local storage
     setIsLoggedIn(!!token); // Update login status
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:3001/product");
+        const response = await fetch('http://localhost:3001/product');
         if (!response.ok) {
-          throw new Error("Failed to fetch");
+          throw new Error('Failed to fetch');
         }
         const data = await response.json();
         setData(data);
       } catch (error) {
         setError(error.message);
-        console.error("Error fetching products:", error);
+        console.error('Error fetching products:', error);
       } finally {
         setLoading(false);
       }
@@ -41,9 +41,9 @@ function Home() {
   const handleSort = (e) => {
     setSortOption(e.target.value);
     const sortedData = [...data].sort((a, b) => {
-      if (e.target.value === "price") {
+      if (e.target.value === 'price') {
         return a.productPrice - b.productPrice;
-      } else if (e.target.value === "name") {
+      } else if (e.target.value === 'name') {
         return a.productName.localeCompare(b.productName);
       }
       return 0;
@@ -54,7 +54,7 @@ function Home() {
   const handleCheckboxChange = (productId) => {
     const isSelected = selectedProducts.includes(productId);
     if (isSelected) {
-      setSelectedProducts(selectedProducts.filter((id) => id !== productId));
+      setSelectedProducts(selectedProducts.filter(id => id !== productId));
     } else {
       setSelectedProducts([...selectedProducts, productId]);
     }
@@ -63,37 +63,32 @@ function Home() {
   const handleDelete = async () => {
     try {
       // Create an array of objects containing both product ID and image name
-      const productsToDelete = selectedProducts.map((id) => ({
+      const productsToDelete = selectedProducts.map(id => ({
         id,
-        imageName: data.find((product) => product.productID === id)
-          .productImage,
+        imageName: data.find(product => product.productID === id).productImage
       }));
-
-      await Axios.delete("http://localhost:3001/product", {
+      
+      await Axios.delete('http://localhost:3001/product', {
         data: { products: productsToDelete },
         headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
+          'Authorization': `Bearer ${localStorage.getItem('token')}`,
         },
       });
       setSelectedProducts([]);
-      const newData = data.filter(
-        (product) => !selectedProducts.includes(product.productID)
-      );
+      const newData = data.filter(product => !selectedProducts.includes(product.productID));
       setData(newData);
     } catch (error) {
-      console.error("Error deleting products:", error);
+      console.error('Error deleting products:', error);
     }
   };
 
-  const filteredData = data.filter(
-    (product) =>
-      product.productName &&
-      product.productName.toLowerCase().includes(searchTerm.toLowerCase())
+  const filteredData = data.filter(product =>
+    product.productName && product.productName.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   const truncateDescription = (description, maxLength) => {
     if (description.length <= maxLength) return description;
-    return description.substring(0, maxLength) + "...";
+    return description.substring(0, maxLength) + '...';
   };
 
   if (error) {
@@ -113,11 +108,7 @@ function Home() {
           value={searchTerm}
           onChange={handleSearch}
         />
-        <select
-          className="sort-dropdown"
-          onChange={handleSort}
-          value={sortOption}
-        >
+        <select className="sort-dropdown" onChange={handleSort} value={sortOption}>
           <option value="">Sort by</option>
           <option value="price">Price</option>
           <option value="name">Name</option>
@@ -129,24 +120,12 @@ function Home() {
       ) : (
         <div className="product-list">
           {filteredData.map((product) => (
-            <div
-              key={product.productID}
-              className="list_product_item"
-              style={{
-                // backgroundImage: `url(http://localhost:3001${product.productImage})`,
-              }}
-            >
-              <Link
-                to={`/product/${product.productID}`}
-                className="product-link"
-              >
-                <div style={{backgroundColor:'red'}}>
+            <div key={product.productID} className="product-item">
+              <Link to={`/product/${product.productID}`} className="product-link">
+                <img src={`http://localhost:3001${product.productImage}`} alt={product.productName} />
                 <h3>{product.productName}</h3>
                 <p>{product.productPrice} บาท</p>
-                <p className="description-box">
-                  {truncateDescription(product.productDescription)}
-                </p>
-                </div>
+                <p className="description-box">{truncateDescription(product.productDescription)}</p>
               </Link>
               {isLoggedIn && (
                 <input
@@ -162,9 +141,7 @@ function Home() {
       )}
 
       {isLoggedIn && selectedProducts.length > 0 && (
-        <button onClick={handleDelete} className="delete-button">
-          Delete Selected
-        </button>
+        <button onClick={handleDelete} className="delete-button">Delete Selected</button>
       )}
     </div>
   );

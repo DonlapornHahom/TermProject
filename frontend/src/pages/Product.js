@@ -62,8 +62,8 @@ function Product() {
       </div>
       <footer className="footer">
         <p>CS369 Group Project</p>
-        <p className="name">6409610745 วิญญู รังสีเลิศ</p>
-        <p className="name">6409682561 พีร์ โพชนา</p>
+        <p className="name">6309681531 มณสิชา วงษ์กราน</p>
+        <p className="name">6309610027 ดลพร หาหอม</p>
       </footer>
     </div>
   );
