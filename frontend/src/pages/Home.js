@@ -17,7 +17,7 @@ function Home() {
     setIsLoggedIn(!!token); // Update login status
     const fetchData = async () => {
       try {
-        const response = await fetch("/product");
+        const response = await fetch("/api/product");
         if (!response.ok) {
           throw new Error("Failed to fetch");
         }
@@ -69,7 +69,7 @@ function Home() {
           .productImage,
       }));
 
-      await Axios.delete("/product", {
+      await Axios.delete("/api/product", {
         data: { products: productsToDelete },
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
