@@ -5,13 +5,11 @@ import App from './App';
 import Product from './pages/Product';
 import Login from './pages/Login';
 import Add from './pages/Add';
-import Home from './pages/Home';
 import Signup from './pages/Signup';
 import reportWebVitals from './reportWebVitals';
 import {
   createBrowserRouter,
   RouterProvider,
-  Route
 } from "react-router-dom";
 
 const router = createBrowserRouter([
