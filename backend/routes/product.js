@@ -5,7 +5,7 @@ const { body, validationResult } = require("express-validator");
 const passport = require("passport");
 const fs = require("fs");
 const path = require("path");
-const config = require("../dbconfig");
+const config = require("../config/db");
 
 // Function to get products from the database
 async function getProducts() {

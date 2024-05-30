@@ -6,7 +6,7 @@ const { Strategy: LocalStrategy } = require('passport-local');
 const { Strategy: JwtStrategy, ExtractJwt } = require('passport-jwt');
 const { body, validationResult } = require('express-validator');
 const sql = require('mssql');
-const config = require('../dbconfig');
+const config = require('../config/db');
 
 const router = express.Router();
 
