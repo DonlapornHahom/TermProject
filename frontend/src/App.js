@@ -32,7 +32,7 @@ function App() {
     <div className="app">
       <header className="header">
         <h1>Home</h1>
-        <div className="nav-icon">
+        <div className="nav-icon" style={{display:'flex', gap: 5}}>
           {/* Conditionally render Add Product and Logout buttons based on login status */}
           {loggedIn && <Link to="/add"><button className="nav-button">Add Product</button></Link>}
           {loggedIn && <button className="nav-button" onClick={handleLogout}>Logout</button>}

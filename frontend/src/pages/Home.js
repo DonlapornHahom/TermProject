@@ -11,7 +11,7 @@ function Home() {
   const [loading, setLoading] = useState(true);
   const [selectedProducts, setSelectedProducts] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false); // Track login status
-  const hostName = window.location.hostname;
+  const hostName = window.location.origin;
   useEffect(() => {
     const token = localStorage.getItem("token"); // Check for token in local storage
     setIsLoggedIn(!!token); // Update login status

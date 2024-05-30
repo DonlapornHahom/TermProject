@@ -47,6 +47,7 @@ function Add() {
           productName: data.productName,
           productPrice: data.productPrice,
           productDescription: data.productDescription,
+          productSize: data.productSize,
           productImage: imagePath,
         },
         {
