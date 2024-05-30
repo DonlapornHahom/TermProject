@@ -17,7 +17,7 @@ function Home() {
     setIsLoggedIn(!!token); // Update login status
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:4000/api/product");
+        const response = await fetch("/api/product");
         if (!response.ok) {
           throw new Error("Failed to fetch");
         }
@@ -69,7 +69,7 @@ function Home() {
           .productImage,
       }));
 
-      await Axios.delete("http://localhost:4000/api/product", {
+      await Axios.delete("/api/product", {
         data: { products: productsToDelete },
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -143,11 +143,7 @@ function Home() {
                   className="product-img"
                   width={200}
                   height={250}
-                  src={`${
-                    hostName +
-                    "http://localhost:4000/api" +
-                    product.productImage
-                  }`}
+                  src={`${hostName + "/api" + product.productImage}`}
                 />
                 <div style={{ width: "100%" }}>
                   <h3>{product.productName}</h3>

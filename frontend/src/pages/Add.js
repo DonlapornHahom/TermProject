@@ -34,17 +34,14 @@ function Add() {
       // Upload the image
       const formData = new FormData();
       formData.append("file", image);
-      const uploadResponse = await Axios.post(
-        "http://localhost:4000/api/upload",
-        formData
-      );
+      const uploadResponse = await Axios.post("/api/upload", formData);
 
       // Get the image path from the upload response
       const imagePath = uploadResponse.data.path;
 
       // Submit the product with the image path
       const productResponse = await Axios.post(
-        "http://localhost:4000/api/product",
+        "/api/product",
         {
           productName: data.productName,
           productPrice: data.productPrice,

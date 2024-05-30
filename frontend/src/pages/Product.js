@@ -12,7 +12,7 @@ function Product() {
     const fetchProduct = async () => {
       try {
         // Fetch all products from the backend
-        const response = await fetch(`http://localhost:4000/api/product`);
+        const response = await fetch(`/api/product`);
 
         // Check if the response is successful
         if (!response.ok) {
@@ -61,9 +61,7 @@ function Product() {
         <h3>Product Detail</h3>
         <h2>{product.productName}</h2>
         <img
-          src={`${
-            hostName + "http://localhost:4000/api" + product.productImage
-          }`}
+          src={`${hostName + "/api" + product.productImage}`}
           alt={product.productName}
         />
         <h4>Size : {product.productSize}</h4>
