@@ -11,7 +11,7 @@ function Product() {
     const fetchProduct = async () => {
       try {
         // Fetch all products from the backend
-        const response = await fetch(`/product`);
+        const response = await fetch(`/api/product`);
         
         // Check if the response is successful
         if (!response.ok) {

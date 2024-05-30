@@ -12,13 +12,13 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-app.use('/auth', authRouter);
+app.use('/api/auth', authRouter);
 
 // Serve static images from the public/Images directory
-app.use('/images', express.static(path.join(__dirname, 'public', 'images')));
+app.use('/api/images', express.static(path.join(__dirname, 'public', 'images')));
 
 // Define routes
-app.use('/product', productRouter);
+app.use('/api/product', productRouter);
 
 // Multer configuration for file upload
 const storage = multer.diskStorage({
@@ -34,7 +34,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 // Upload endpoint
-app.post('/upload', upload.single('file'), (req, res) => {
+app.post('/api/upload', upload.single('file'), (req, res) => {
   if (!req.file) {
     return res.status(400).json({ error: 'No file uploaded' });
   }
@@ -46,7 +46,7 @@ app.use(function (req, res, next) {
   next(createError(404));
 });
 
-const port = 3001;
+const port = 4000;
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
