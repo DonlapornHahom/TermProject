@@ -6,11 +6,13 @@
 }
 
 * {
+  margin:0;
+  padding:0;
   box-sizing: border-box;
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: Jura;
   background-color: #f8f9fa;
   margin: 0;
   padding: 0;
@@ -38,6 +40,8 @@ body {
 .header, .footer {
   background: #333;
   color: #fff;
+}
+
 .header {
   background: white;
   color: black;
@@ -131,25 +135,29 @@ body {
 }
 
 
-.product-item {
+.list_product_item {
   position: relative;
   text-decoration: none;
   color: inherit;
   width: 200px;
+  height: 250px;
   padding: 15px;
   border: 1px solid #eee;
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
-.product-item:hover {
+.list_product_item:hover {
   transform: translateY(-10px);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   background-color: #f0f0f0;
 }
 
-.product-item img {
+.list_product_item img {
   width: 150px;
   height: 150px;
   object-fit: cover;
@@ -157,7 +165,7 @@ body {
   border-radius: 10px;
 }
 
-.product-item h3 {
+.list_product_item h3 {
   margin-top: 10px;
   margin-bottom: 5px;
   font-size: 1.2em;
@@ -165,7 +173,7 @@ body {
   font-family: 'Montserrat', sans-serif;
 }
 
-.product-item p {
+.list_product_item p {
   margin-top: 5px;
   font-size: 1em;
   color: #666;
@@ -359,4 +367,3 @@ label {
   outline: none;
   box-shadow: 0 0 3px 2px rgba(255, 0, 0, 0.5); /* Red shadow on focus */
 }
-
