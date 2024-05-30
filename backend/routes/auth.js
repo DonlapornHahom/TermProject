@@ -94,7 +94,7 @@ router.post('/login', [
 
 router.post('/signup', [
   body('username', 'Username is required').not().isEmpty(),
-  body('password', 'Password is required').isLength({ min: 6 })
+  body('password', 'Password has contain atleast 6 characters').isLength({ min: 6 })
 ], async (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {

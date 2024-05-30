@@ -26,7 +26,7 @@ function Signup() {
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.msg || 'Failed to sign up');
+        throw new Error(data.errors[0].msg || 'Failed to sign up');
       }
 
       setSuccess(true);
@@ -45,7 +45,6 @@ function Signup() {
       </header>
       <div className="main-content center-content">
         <div className="login-form">
-          {error && <div className="error">{error}</div>}
           {success && <div className="success">Sign up successful! Redirecting to login...</div>}
           <form className='inside-form' onSubmit={handleSignup}>
             <div className="form-group">
@@ -72,6 +71,7 @@ function Signup() {
                 required
               />
             </div>
+          {error && <div className="error">{error}</div>}
             <button type="submit" className="form-button">Sign Up</button>
           </form>
         </div>
