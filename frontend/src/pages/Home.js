@@ -133,19 +133,19 @@ function Home() {
               key={product.productID}
               className="list_product_item"
               style={{
-                // backgroundImage: `url(http://localhost:3001${product.productImage})`,
+                backgroundImage: `url(http://localhost:3001${product.productImage})`,
               }}
             >
               <Link
                 to={`/product/${product.productID}`}
                 className="product-link"
               >
-                <div style={{backgroundColor:'red'}}>
-                <h3>{product.productName}</h3>
-                <p>{product.productPrice} บาท</p>
-                <p className="description-box">
-                  {truncateDescription(product.productDescription)}
-                </p>
+                <div style={{ width: "100%" }}>
+                  <h3>{product.productName}</h3>
+                  <p>{product.productPrice} บาท</p>
+                  <p className="description-box">
+                    {truncateDescription(product.productDescription)}
+                  </p>
                 </div>
               </Link>
               {isLoggedIn && (
