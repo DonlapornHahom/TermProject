@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Axios from "axios";
-import "../App.css";
 
 function Add() {
   const navigate = useNavigate();

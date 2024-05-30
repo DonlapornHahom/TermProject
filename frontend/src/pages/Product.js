@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import "../App.css"; // Importing styles from App.css
+import { formatPrice } from "../utils";
 
 function Product() {
   const { id } = useParams(); // Get the product ID from the URL
@@ -65,7 +65,7 @@ function Product() {
           alt={product.productName}
         />
         <h4>Size : {product.productSize}</h4>
-        <p>Price: {product.productPrice} บาท</p>
+        <p>Price: {formatPrice(product.productPrice)} THB</p>
         <div style={{ width: "100%", textAlign: "center" }}>
           <p>{product.productDescription}</p>
         </div>

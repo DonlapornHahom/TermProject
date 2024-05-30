@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Axios from "axios";
-import "../App.css";
+import { formatPrice } from "../utils/index";
 
 function Home() {
   const [data, setData] = useState([]);
@@ -147,7 +147,7 @@ function Home() {
                 />
                 <div style={{ width: "100%" }}>
                   <h3>{product.productName}</h3>
-                  <p>{product.productPrice} บาท</p>
+                  <p>{formatPrice(product.productPrice)} THB</p>
                   <p className="description-box">
                     {truncateDescription(product.productDescription)}
                   </p>

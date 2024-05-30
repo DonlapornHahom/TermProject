@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import "../App.css";
 
 function Signup() {
   const [username, setUsername] = useState("");
@@ -40,7 +39,6 @@ function Signup() {
   return (
     <div className="app">
       <header className="header">
-        <h1>Sign Up</h1>
         <Link to="/">
           <button className="nav-button">Home</button>
         </Link>
@@ -48,6 +46,7 @@ function Signup() {
       <div className="main-content center-content">
         <div className="login-form" style={{ flexDirection: "column" }}>
           <form className="inside-form" onSubmit={handleSignup}>
+            <h1 className="header-form">Sign Up</h1>
             <div className="form-group">
               <label htmlFor="username">Username:</label>
               <input
