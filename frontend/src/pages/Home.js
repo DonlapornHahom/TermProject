@@ -11,7 +11,7 @@ function Home() {
   const [loading, setLoading] = useState(true);
   const [selectedProducts, setSelectedProducts] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false); // Track login status
-
+  const hostName = window.location.hostname;
   useEffect(() => {
     const token = localStorage.getItem("token"); // Check for token in local storage
     setIsLoggedIn(!!token); // Update login status
@@ -143,7 +143,7 @@ function Home() {
                   className="product-img"
                   width={200}
                   height={250}
-                  src={`${product.productImage}`}
+                  src={`${hostName + "/api" + product.productImage}`}
                 />
                 <div style={{ width: "100%" }}>
                   <h3>{product.productName}</h3>
