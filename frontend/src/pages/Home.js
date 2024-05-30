@@ -120,12 +120,24 @@ function Home() {
       ) : (
         <div className="product-list">
           {filteredData.map((product) => (
-            <div key={product.productID} className="product-item">
-              <Link to={`/product/${product.productID}`} className="product-link">
-                <img src={`http://localhost:3001${product.productImage}`} alt={product.productName} />
-                <h3>{product.productName}</h3>
-                <p>{product.productPrice} บาท</p>
-                <p className="description-box">{truncateDescription(product.productDescription)}</p>
+            <div
+              key={product.productID}
+              className="list_product_item"
+              style={{
+                backgroundImage: `url(http://localhost:3001${product.productImage})`,
+              }}
+            >
+              <Link
+                to={`/product/${product.productID}`}
+                className="product-link"
+              >
+                <div style={{ width: "100%" }}>
+                  <h3>{product.productName}</h3>
+                  <p>{product.productPrice} บาท</p>
+                  <p className="description-box">
+                    {truncateDescription(product.productDescription)}
+                  </p>
+                </div>
               </Link>
               {isLoggedIn && (
                 <input
