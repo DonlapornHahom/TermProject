@@ -12,7 +12,7 @@ async function getProducts() {
   try {
     await sql.connect(config);
     const result =
-      await sql.query`SELECT productID, productName, productPrice, productDescription, productImage FROM product`;
+      await sql.query`SELECT productID, productName, productPrice, productDescription, productImage, productSize FROM product`;
     return result.recordset;
   } catch (err) {
     console.error("SQL error", err);
@@ -36,8 +36,8 @@ async function addProduct(
 
     // SQL query to insert a new product
     const insertQuery = `
-            INSERT INTO Product (productName, productPrice, productDescription, productImage)
-            VALUES (@productName, @productPrice, @productDescription, @productImage);
+            INSERT INTO Product (productName, productPrice, productDescription, productImage, productSize)
+            VALUES (@productName, @productPrice, @productDescription, @productImage, @productSize);
         `;
 
     // Execute the query
