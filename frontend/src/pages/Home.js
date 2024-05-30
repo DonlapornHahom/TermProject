@@ -103,7 +103,7 @@ function Home() {
   return (
     <div className="product-container">
       <h2>Product List</h2>
-      <h3>รายการสินค้า</h3>
+      <h3 style={{ margin: "10px 0 10px 0" }}>รายการสินค้า</h3>
 
       <div className="controls">
         <input
@@ -122,6 +122,11 @@ function Home() {
           <option value="price">Price</option>
           <option value="name">Name</option>
         </select>
+        {isLoggedIn && selectedProducts.length > 0 && (
+          <button onClick={handleDelete} className="delete-button">
+            Delete
+          </button>
+        )}
       </div>
 
       {loading ? (
@@ -129,17 +134,17 @@ function Home() {
       ) : (
         <div className="product-list">
           {filteredData.map((product) => (
-            <div
-              key={product.productID}
-              className="list_product_item"
-              style={{
-                backgroundImage: `url(http://localhost:3001${product.productImage})`,
-              }}
-            >
+            <div key={product.productID} className="list_product_item">
               <Link
                 to={`/product/${product.productID}`}
                 className="product-link"
               >
+                <img
+                  className="product-img"
+                  width={200}
+                  height={250}
+                  src={`http://localhost:3001${product.productImage}`}
+                />
                 <div style={{ width: "100%" }}>
                   <h3>{product.productName}</h3>
                   <p>{product.productPrice} บาท</p>
@@ -159,12 +164,6 @@ function Home() {
             </div>
           ))}
         </div>
-      )}
-
-      {isLoggedIn && selectedProducts.length > 0 && (
-        <button onClick={handleDelete} className="delete-button">
-          Delete Selected
-        </button>
       )}
     </div>
   );

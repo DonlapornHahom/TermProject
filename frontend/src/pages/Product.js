@@ -41,7 +41,7 @@ function Product() {
   }
 
   if (!product) {
-    return <div>Loading...</div>;
+    return <div className='loading'>Loading...</div>;
   }
 
   return (
@@ -54,6 +54,7 @@ function Product() {
       </header>
       <div className="product-detail">
         <h3>Product Detail</h3>
+        <h2>{product.productName}</h2>
         <img src={`http://localhost:3001${product.productImage}`} alt={product.productName} />
         <p>Price: {product.productPrice} บาท</p>
         <div className="description-box">
