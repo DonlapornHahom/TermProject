@@ -10,7 +10,7 @@ function Add() {
     productPrice: "",
     productDescription: "",
     productImage: "",
-    productSize:"",
+    productSize: "",
   });
   const [image, setImage] = useState(null);
 

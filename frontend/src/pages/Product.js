@@ -66,7 +66,7 @@ function Product() {
         />
         <h4>Size : {product.productSize}</h4>
         <p>Price: {product.productPrice} บาท</p>
-        <div className="description-box">
+        <div style={{ width: "100%", textAlign: "center" }}>
           <p>{product.productDescription}</p>
         </div>
       </div>

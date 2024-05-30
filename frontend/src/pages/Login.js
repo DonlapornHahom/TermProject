@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
-import '../App.css';
+import React, { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import "../App.css";
 
 function Login() {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
@@ -24,14 +24,14 @@ function Login() {
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.msg || 'Failed to login');
+        throw new Error(data.msg || "Failed to login");
       }
 
       // Save the token in local storage or context
-      localStorage.setItem('token', data.token);
+      localStorage.setItem("token", data.token);
 
       // Redirect to the home page or any other page
-      navigate('/');
+      navigate("/");
     } catch (err) {
       setError(err.message);
     }
@@ -41,7 +41,9 @@ function Login() {
     <div className="app">
       <header className="header">
         <h1>Login</h1>
-        <Link to="/"><button className="nav-button">Home</button></Link>
+        <Link to="/">
+          <button className="nav-button">Home</button>
+        </Link>
       </header>
       <div className="main-content center-content">
         <div className="login-form">
@@ -71,7 +73,9 @@ function Login() {
                 required
               />
             </div>
-            <button type="submit" className="form-button width-100">Login</button>
+            <button type="submit" className="form-button width-100">
+              Login
+            </button>
           </form>
         </div>
       </div>
