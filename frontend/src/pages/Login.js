@@ -46,7 +46,7 @@ function Login() {
       <div className="main-content center-content">
         <div className="login-form">
           {error && <div className="error">{error}</div>}
-          <form onSubmit={handleLogin}>
+          <form className="inside-form" onSubmit={handleLogin}>
             <div className="form-group">
               <label htmlFor="username">Username:</label>
               <input
@@ -71,14 +71,14 @@ function Login() {
                 required
               />
             </div>
-            <button type="submit" className="nav-button">Login</button>
+            <button type="submit" className="form-button width-100">Login</button>
           </form>
         </div>
       </div>
       <footer className="footer">
         <p>CS369 Group Project</p>
-        <p className="name">6409610745 วิญญู รังสีเลิศ</p>
-        <p className="name">6409682561 พีร์ โพชนา</p>
+        <p className="name">6309681531 มณสิชา วงษ์กราน</p>
+        <p className="name">6309610027 ดลพร หาหอม</p>
       </footer>
     </div>
   );

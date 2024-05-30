@@ -98,9 +98,9 @@ router.get('/', async (req, res) => {
 
 router.post('/', passport.authenticate('jwt', { session: false }), [
     // Validation middleware
-    body('productName').notEmpty().withMessage('Product name is required'),
-    body('productPrice').notEmpty().isNumeric().withMessage('Product price must be a number'),
-    body('productDescription').notEmpty().withMessage('Product description is required')
+    body('productName').notEmpty().withMessage('Product name can\'t be empty'),
+    body('productPrice').notEmpty().isNumeric().withMessage('Price must be a number'),
+    body('productDescription').notEmpty().withMessage('Product description can\'t be empty')
 ], async (req, res) => {
     // Check for validation errors
     const errors = validationResult(req);
