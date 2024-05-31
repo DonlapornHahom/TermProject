@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { formatPrice } from "../utils";
+import Logo from "../assets/logo.png";
 
 function Product() {
   const { id } = useParams(); // Get the product ID from the URL
@@ -50,15 +51,15 @@ function Product() {
   return (
     <div className="app">
       <header className="header">
-        <h2>{product.productName}</h2>
-        <div className="nav-icon">
-          <Link to="/">
-            <button className="nav-button">Home</button>
-          </Link>
-        </div>
+        <Link to="/">
+          <div className="row-center">
+            <img src={Logo} width={50} height={50} />
+            <p>DONCHA SHOP</p>
+          </div>
+        </Link>
       </header>
       <div className="product-detail">
-        <h3>Product Detail</h3>
+        <h3 className="font-franc">Product Detail</h3>
         <h2>{product.productName}</h2>
         <img
           src={`${hostName + "/api" + product.productImage}`}
