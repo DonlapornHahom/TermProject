@@ -26,7 +26,7 @@ function Add() {
       !data.productDescription ||
       !image
     ) {
-      alert("Please fill in all fields and upload an image.");
+      alert("Please input and upload an image.");
       return;
     }
 

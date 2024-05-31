@@ -102,8 +102,9 @@ function Home() {
 
   return (
     <div className="product-container">
-      <h2>Product List</h2>
-      <h3 style={{ margin: "10px 0 10px 0" }}>รายการสินค้า</h3>
+      <h2 className="font-franc" style={{ margin: "10px 0 10px 0" }}>
+        Product List
+      </h2>
 
       <div className="controls">
         <input

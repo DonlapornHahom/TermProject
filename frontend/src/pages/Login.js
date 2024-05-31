@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import Logo from "../assets/logo.png";
 
 function Login() {
   const [username, setUsername] = useState("");
@@ -40,12 +41,14 @@ function Login() {
     <div className="app">
       <header className="header">
         <Link to="/">
-          <button className="nav-button">Home</button>
+          <div className="row-center">
+            <img src={Logo} width={50} height={50} />
+            <p>TERM PROJECT</p>
+          </div>
         </Link>
       </header>
       <div className="main-content center-content">
         <div className="login-form">
-          {error && <div className="error">{error}</div>}
           <form className="inside-form" onSubmit={handleLogin}>
             <h1 className="header-form">Sign In</h1>
             <div className="form-group">
@@ -71,6 +74,7 @@ function Login() {
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
+              {error && <div className="error">{error}</div>}
             </div>
             <button type="submit" className="form-button width-100">
               Login

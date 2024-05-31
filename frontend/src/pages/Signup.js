@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import Logo from "../assets/logo.png";
 
 function Signup() {
   const [username, setUsername] = useState("");
@@ -40,7 +41,10 @@ function Signup() {
     <div className="app">
       <header className="header">
         <Link to="/">
-          <button className="nav-button">Home</button>
+          <div className="row-center">
+            <img src={Logo} width={50} height={50} />
+            <p>TERM PROJECT</p>
+          </div>
         </Link>
       </header>
       <div className="main-content center-content">
