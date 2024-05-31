@@ -54,7 +54,7 @@ function Product() {
         <Link to="/">
           <div className="row-center">
             <img src={Logo} width={50} height={50} />
-            <p>TERM PROJECT</p>
+            <p>DONCHA SHOP</p>
           </div>
         </Link>
       </header>
